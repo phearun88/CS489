@@ -7,7 +7,6 @@ import phearun.thds_backend.model.User;
 
 @Mapper
 public interface UserMapper {
-
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
     User toEntity(UserDTO dto);
     UserDTO toDTO(User user);

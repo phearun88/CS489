@@ -35,18 +35,12 @@ public class CategoryController {
         return ResponseEntity.ok(category);
     }
     @GetMapping("{id}")
-    public ResponseEntity<?> getById(@PathVariable("id") int id) throws ApiException {
+    public ResponseEntity<?> getById(@PathVariable("id") Long id) throws ApiException {
         return ResponseEntity.ok(categoryService.getById(id));
     }
 
-//    @GetMapping("/subcategory/{cate_id}")
-//    public ResponseEntity<?> getByCategory(@PathVariable("cate_id") int id) throws ApiException {
-//        System.out.println("ID========="+ id);
-//        return ResponseEntity.ok(categoryService.getByCategory(id));
-//    }
-
     @PutMapping("{id}")
-    public ResponseEntity<Category> update(@PathVariable("id") int id, @RequestBody CategoryDTO categoryDTO) throws ApiException {
+    public ResponseEntity<Category> update(@PathVariable("id") Long id, @RequestBody CategoryDTO categoryDTO) throws ApiException {
         Category brand =  CategoryMapper.INSTANCE.toEntity(categoryDTO);
         return ResponseEntity.ok(categoryService.update(id, brand));
     }
@@ -61,7 +55,7 @@ public class CategoryController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Integer id) {
+    public ResponseEntity<?> delete(@PathVariable Long id) {
         categoryService.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

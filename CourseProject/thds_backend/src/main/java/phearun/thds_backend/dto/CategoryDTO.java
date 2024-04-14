@@ -10,12 +10,10 @@ import lombok.Data;
 @Data
 public class CategoryDTO {
 
-    private Long cateId;
-    private String cate_nm;
-    private String cate_status;
-    private String created_date;
-    private String updated_date;
-    private Long user_id;
+    private Long id;
+    private String name;
+    private Boolean active;
+    private Long userId;
 
 }
 

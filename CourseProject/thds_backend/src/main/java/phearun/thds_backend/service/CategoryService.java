@@ -9,14 +9,14 @@ import java.util.List;
 public interface CategoryService {
     Category save(Category entity);
 
-    Category getById(Integer id);
+    Category getById(Long id);
 
     //SubCategory getByCategory(Integer cate_id);
 
 
-    Category update(Integer id, Category category) ;
+    Category update(Long id, Category category) ;
 
     List<Category> getCategories();
 
-    void delete(Integer id);
+    void delete(Long id);
 }

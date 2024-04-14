@@ -6,22 +6,28 @@
 package phearun.thds_backend.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @Table(name = "category")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cateId;
-    @Column(name = "cate_nm")
-    private String cateNm;
-    private String cateStatus;
-    private String createdDate;
-    private String updatedDate;
+    @GeneratedValue(generator = "category_seq_generator")
+    @SequenceGenerator(name = "category_seq_generator", initialValue = 1, sequenceName = "category_seq")
+    private Long id;
+    private String name;
+    private Boolean active;
     private Long userId;
+
+    public Category(String name){
+        this.name = name;
+    }
 
 
 }

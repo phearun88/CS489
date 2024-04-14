@@ -9,14 +9,14 @@ import java.util.List;
 public interface SubCategoryService {
     SubCategory save(SubCategory entity);
 
-    SubCategory getById(Integer id);
-
+    SubCategory getById(Long id);
+//
     List<SubCategory> getSubCategoryByCategoryId(Long id);
-
-
-    SubCategory update(Integer id, SubCategory subCategory) ;
-
+//
+//
+//    SubCategory update(Long id, SubCategory subCategory) ;
+//
     List<SubCategory> getSubCategories();
-
-    void delete(Integer id);
+//
+//    void delete(Integer id);
 }

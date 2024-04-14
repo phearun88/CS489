@@ -11,9 +11,23 @@ import lombok.Data;
 @Data
 public class UserDTO {
 
-    private Long userId;
+    private Long id;
+    private String lastName;
+    private String firstName;
     private String username;
     private String password;
+    private String department;
+    private String position;
+    private String dob;
+    private String gender;
+    private String type;
+    private String status;
+
+
+//    private Boolean isAccountNonExpired;
+//    private Boolean isAccountNonLocked;
+//    private Boolean isCredentialsNonExpired;
+//    private Boolean isEnabled;
 
 }
 

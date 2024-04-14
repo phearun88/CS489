@@ -17,7 +17,7 @@ import phearun.thds_backend.model.User;
 import phearun.thds_backend.repository.CategoryRepository;
 import phearun.thds_backend.repository.UserRepository;
 import phearun.thds_backend.service.CategoryService;
-import phearun.thds_backend.service.UserService;
+
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category getById(Integer id) {
+    public Category getById(Long id) {
         return categoryRepository.findById(id)
                 .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, String.format("category not found for id=%d", id)));
     }
@@ -47,10 +47,10 @@ public class CategoryServiceImpl implements CategoryService {
 //    }
 
     @Override
-    public Category update(Integer id, Category category) {
+    public Category update(Long id, Category category) {
         Category target = getById(id);
 
-        BeanUtils.copyProperties(category, target, "cate_id");
+        BeanUtils.copyProperties(category, target, "id");
 
         return categoryRepository.save(target);
     }
@@ -61,7 +61,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         categoryRepository.deleteById(id);
     }
 }

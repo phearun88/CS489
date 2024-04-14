@@ -12,15 +12,22 @@ import lombok.Data;
 @Entity
 @Table(name = "subcategory")
 public class SubCategory {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long subCateId;
-    private Long cateId;
-    private String subNm;
-    private String subStatus;
-    private String createdDate;
-    private String updatedDate;
+    @GeneratedValue(generator = "subcategory_seq_generator")
+    @SequenceGenerator(name = "subcategory_seq_generator", initialValue = 1, sequenceName = "subcategory_seq")
+    private Long id;
+
+    @Column(name = "subcate_name")
+    private String name;
+    private Boolean active;
     private Long userId;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cate_id")
+    private Category category;
+
 }
 
 

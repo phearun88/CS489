@@ -31,34 +31,38 @@ public class SubCategoryServiceImpl implements SubCategoryService {
     }
 
     @Override
-    public SubCategory getById(Integer id) {
+    public SubCategory getById(Long id) {
         return subCategoryRepository.findById(id)
                 .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, String.format("SubCategory not found for id=%d", id)));
     }
-
+//
     @Override
-    public List<SubCategory> getSubCategoryByCategoryId(Long id) {
-        System.out.println(subCategoryRepository.findSubCategoriesByCateId(id));
-        return subCategoryRepository.findSubCategoriesByCateId(id);
+    public List<SubCategory> getSubCategoryByCategoryId(Long cateId) {
+
+       // System.out.println(subCategoryRepository.findSubCategoriesByCateId(id));
+
+        System.out.println("kkkkkkkkkkkkk");
+
+        return subCategoryRepository.findSubCategoriesByCategory_Id(cateId);
     }
-
-
-    @Override
-    public SubCategory update(Integer id, SubCategory SubCategory) {
-        SubCategory target = getById(id);
-
-        BeanUtils.copyProperties(SubCategory, target, "subId");
-
-        return subCategoryRepository.save(target);
-    }
-
+//
+//
+//    @Override
+//    public SubCategory update(Long id, SubCategory SubCategory) {
+//        SubCategory target = getById(id);
+//
+//        BeanUtils.copyProperties(SubCategory, target, "id");
+//
+//        return subCategoryRepository.save(target);
+//    }
+//
     @Override
     public List<SubCategory> getSubCategories() {
         return subCategoryRepository.findAll();
     }
-
-    @Override
-    public void delete(Integer id) {
-        subCategoryRepository.deleteById(id);
-    }
+//
+//    @Override
+//    public void delete(Integer id) {
+//        subCategoryRepository.deleteById(id);
+//    }
 }

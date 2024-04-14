@@ -12,6 +12,6 @@ import phearun.thds_backend.model.SubCategory;
 
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Integer> {
+public interface CategoryRepository extends JpaRepository<Category, Long> {
     //
 }

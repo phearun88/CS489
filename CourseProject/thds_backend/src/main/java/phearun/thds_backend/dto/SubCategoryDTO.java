@@ -5,18 +5,17 @@
 
 package phearun.thds_backend.dto;
 
+import jakarta.persistence.Column;
 import lombok.Data;
 
 @Data
 public class SubCategoryDTO {
 
-    private Long subCateId;
-    private Long cateId;
-    private String subNm;
-    private String subStatus;
-    private String createdDate;
-    private String updatedDate;
+    private Long id;
+    private String name;
+    private Boolean active;
     private Long userId;
+    private Long cateId;
 
 }
 
