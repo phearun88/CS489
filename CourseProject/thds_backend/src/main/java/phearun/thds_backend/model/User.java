@@ -19,7 +19,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long userId;
     private String lastName;
     private String firstName;
     private String username;
@@ -35,9 +35,12 @@ public class User {
     private Boolean isCredentialsNonExpired;
     private Boolean isEnabled;
 
-
-
-//    @Enumerated(EnumType.STRING)
-//    private RoleEnum role;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "userId")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "roleId")}
+    )
+    private List<Role> roles;
 
 }

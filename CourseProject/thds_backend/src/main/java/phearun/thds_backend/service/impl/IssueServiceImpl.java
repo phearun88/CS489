@@ -10,11 +10,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import phearun.thds_backend.dto.IssueDetailDTO;
 import phearun.thds_backend.exception.ApiException;
 import phearun.thds_backend.model.Issue;
 import phearun.thds_backend.repository.IssueRepository;
 import phearun.thds_backend.service.IssueService;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
 @Service
@@ -30,13 +32,14 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
-    public Issue getById(Integer id) {
+    public Issue getById(Long id) {
+        System.out.println("=========="+id);
         return issueRepository.findById(id)
                 .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, String.format("Issue not found for id=%d", id)));
     }
 
     @Override
-    public Issue update(Integer id, Issue Issue) {
+    public Issue update(Long id, Issue Issue) {
         Issue target = getById(id);
 
         BeanUtils.copyProperties(Issue, target, "iss_id");
@@ -46,11 +49,25 @@ public class IssueServiceImpl implements IssueService {
 
     @Override
     public List<Issue> getIssues() {
+        System.out.println("StartTesting");
+
+        System.out.println("========" + issueRepository.findAll());
+        System.out.println("EndTesting");
         return issueRepository.findAll();
     }
 
+//    @Override
+//    public List<IssueDetailDTO> findAllIssue() {
+//
+//        System.out.println("Start");
+//        var data = issueRepository.findAllIssue();
+//        System.out.println("========" + data);
+//        System.out.println("End");
+//        return issueRepository.findAllIssue();
+//    }
+
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         issueRepository.deleteById(id);
     }
 }
