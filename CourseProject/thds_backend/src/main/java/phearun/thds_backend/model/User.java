@@ -5,10 +5,10 @@
 
 package phearun.thds_backend.model;
 
+
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -19,28 +19,28 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
-    private String lastName;
-    private String firstName;
-    private String username;
+    private Long id;
+    private String email;
     private String password;
-    private String department;
-    private String position;
-    private String dob;
-    private String gender;
-    private String type;
     private String status;
     private Boolean isAccountNonExpired;
     private Boolean isAccountNonLocked;
     private Boolean isCredentialsNonExpired;
     private Boolean isEnabled;
-
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "userId")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "roleId")}
-    )
+    //@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
+
+
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//    public Long getId() {
+//        return id;
+//    }
+
 
 }

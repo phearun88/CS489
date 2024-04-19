@@ -1,28 +1,24 @@
-/**
- * Author : PhearunPhin
- * Date : 4/16/2024
- */
-
 package phearun.thds_backend.model;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.util.List;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Table(name="roles")
+@Data
 public class Role {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long roleId;
-    private String roleName;
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-    private List<User> users;
+    private Long id;
+    private String title;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }

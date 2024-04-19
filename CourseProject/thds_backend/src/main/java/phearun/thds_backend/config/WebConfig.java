@@ -1,10 +1,11 @@
 /**
  * Author : PhearunPhin
- * Date : 4/5/2024
+ * Date : 4/18/2024
  */
 
 package phearun.thds_backend.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
