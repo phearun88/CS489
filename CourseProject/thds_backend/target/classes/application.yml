@@ -1,0 +1,35 @@
+
+spring:
+  # Database
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/thds_db
+    username: postgres
+    password: admin
+  h2:
+    console:
+      enabled: true
+
+  # JPA properties
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  main:
+    banner-mode: console
+logging:
+  level:
+    root: info
+
+
+app:
+  jwt:
+    expire:
+      duration: 3600000
+
+#application:
+#  rest:
+#    context-path: /api
+#    allowed-origins: ${ALLOWED_ORIGINS:http://localhost:4200, http://localhost:4201}
+#    #secret-key: ${key:mykey123456789abcdmykey123456789abcdmykey123456789abcd}
