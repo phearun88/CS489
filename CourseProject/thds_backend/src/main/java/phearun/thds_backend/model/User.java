@@ -6,8 +6,11 @@
 package phearun.thds_backend.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.Set;
@@ -15,14 +18,24 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "users")
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
+   // @JsonIgnore
     private String password;
     private String status;
+    private String lastName;
+    private String firstName;
+    private String department;
+    private String position;
+    private String dob;
+    private String gender;
+    private String type;
     private Boolean isAccountNonExpired;
     private Boolean isAccountNonLocked;
     private Boolean isCredentialsNonExpired;
@@ -35,12 +48,9 @@ public class User {
     private List<Role> roles;
 
 
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//    public Long getId() {
-//        return id;
-//    }
+    public User(String email){
+        this.email = email;
+    }
 
 
 }

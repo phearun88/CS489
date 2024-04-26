@@ -2,6 +2,7 @@ phearun\thds_backend\ThdsBackendApplication.class
 phearun\thds_backend\service\IssueService.class
 phearun\thds_backend\repository\SubCategoryRepository.class
 phearun\thds_backend\model\SubCategory.class
+phearun\thds_backend\config\WebConfig.class
 phearun\thds_backend\filter\JwtRequestFilter.class
 phearun\thds_backend\model\User.class
 phearun\thds_backend\repository\IssueRepository.class

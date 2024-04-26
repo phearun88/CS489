@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import phearun.thds_backend.dto.IssueDetailDTO;
+//import phearun.thds_backend.dto.IssueDetailDTO;
 import phearun.thds_backend.model.Issue;
 
 import java.util.List;
@@ -13,6 +13,10 @@ import java.util.List;
 public interface IssueRepository extends JpaRepository<Issue, Long>{
 
 //,
+
+
+    @Query(value = "SELECT * FROM Issue i WHERE i.user_id = ?1 AND i.iss_draft = 'yes'", nativeQuery = true)
+    List<Issue> findAllIssueByUserId(Long userId);
 
 
 //    @Query(value = "select iss.iss_id, iss.iss_name from issue as iss inner join subcategory as sub on iss.sub_cate_id = sub.id",

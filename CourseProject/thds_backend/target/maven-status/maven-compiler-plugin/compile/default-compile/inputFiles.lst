@@ -14,6 +14,7 @@ D:\MIU\Courses\PHEARUN's courses\ASD\projects\CourseProject\thds_backend\src\mai
 D:\MIU\Courses\PHEARUN's courses\ASD\projects\CourseProject\thds_backend\src\main\java\phearun\thds_backend\mapper\IssueMapper.java
 D:\MIU\Courses\PHEARUN's courses\ASD\projects\CourseProject\thds_backend\src\main\java\phearun\thds_backend\mapper\CategoryMapper.java
 D:\MIU\Courses\PHEARUN's courses\ASD\projects\CourseProject\thds_backend\src\main\java\phearun\thds_backend\repository\IssueRepository.java
+D:\MIU\Courses\PHEARUN's courses\ASD\projects\CourseProject\thds_backend\src\main\java\phearun\thds_backend\config\WebConfig.java
 D:\MIU\Courses\PHEARUN's courses\ASD\projects\CourseProject\thds_backend\src\main\java\phearun\thds_backend\dto\IssueDTO.java
 D:\MIU\Courses\PHEARUN's courses\ASD\projects\CourseProject\thds_backend\src\main\java\phearun\thds_backend\mapper\SubCategoryMapper.java
 D:\MIU\Courses\PHEARUN's courses\ASD\projects\CourseProject\thds_backend\src\main\java\phearun\thds_backend\service\impl\UserServiceImpl.java

@@ -33,6 +33,14 @@ public class UserDTO {
     private Long id;
     private String email;
     private String status;
+    private String lastName;
+    private String firstName;
+    private String department;
+    private String position;
+    private String dob;
+    private String gender;
+    private String type;
+
     private List<Role> roles;
 
 

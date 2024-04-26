@@ -10,7 +10,7 @@ import phearun.thds_backend.service.CategoryService;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-04-19T16:27:03-0500",
+    date = "2024-04-24T12:24:55-0500",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 22 (Oracle Corporation)"
 )
 @Component

@@ -19,7 +19,7 @@ public class WebConfig implements WebMvcConfigurer {
 
         registry.addMapping("/**") // Allow CORS for all endpoints
                 .allowedOrigins("*")    // Allow requests from any origin (replace with your specific origin if needed)
-                .allowedMethods("GET", "PUT", "POST", "DELETE", "OPTIONS") // Allow specific HTTP methods  //, "POST", "PUT", "DELETE", "OPTIONS"
+                .allowedMethods("GET", "PUT", "POST", "DELETE", "OPTIONS", "PATCH") // Allow specific HTTP methods  //, "POST", "PUT", "DELETE", "OPTIONS"
                 .allowedHeaders("*");   // Allow all headers in the request
     }
 }

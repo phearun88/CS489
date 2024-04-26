@@ -7,14 +7,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import phearun.thds_backend.model.User;
-import phearun.thds_backend.repository.UserRepository;
+import phearun.thds_backend.repository.AuthRepository;
 import phearun.thds_backend.service.impl.UserDetailImpl;
 
 @Service
 @RequiredArgsConstructor
 public class JwtUserDetailService implements UserDetailsService {
 
-    private final UserRepository userRepository;
+    private final AuthRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

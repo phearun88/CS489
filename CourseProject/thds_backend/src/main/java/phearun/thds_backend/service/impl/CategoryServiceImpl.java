@@ -12,10 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import phearun.thds_backend.exception.ApiException;
 import phearun.thds_backend.model.Category;
-import phearun.thds_backend.model.SubCategory;
-import phearun.thds_backend.model.User;
 import phearun.thds_backend.repository.CategoryRepository;
-import phearun.thds_backend.repository.UserRepository;
 import phearun.thds_backend.service.CategoryService;
 
 

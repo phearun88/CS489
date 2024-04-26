@@ -26,7 +26,7 @@ public class CategoryController {
     @PostMapping
     public ResponseEntity<Category> create(@RequestBody CategoryDTO categoryDTO){
         Category category = CategoryMapper.INSTANCE.toEntity(categoryDTO);
-        category.setUserId(25L);
+     //   category.setUserId(25L);
 
         System.out.println("category + " +category);
 
