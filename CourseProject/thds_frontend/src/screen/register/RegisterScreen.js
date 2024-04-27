@@ -23,12 +23,10 @@ const RegisterScreen = () => {
         console.log(formData);
         try {
             const response = await axios.post(baseURL + '/users/register', formData);
-            
-            
-            
-            //navigator('/login')
+            navigator('/login')
         } catch (error) {
             console.error('Error registering user:', error);
+            navigator('/login')
             // Handle error
         }
     };
@@ -43,18 +41,7 @@ const RegisterScreen = () => {
                 </div>
                 <h1 className="text-2xl font-semibold mb-6">Register</h1>
                 <form onSubmit={handleSubmit}>
-                    {/* <div className="mb-4">
-                        <label htmlFor="username" className="block text-gray-700 font-semibold mb-2">Username</label>
-                        <input type="text" id="username" name="email" value={formData.email} onChange={handleChange} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" placeholder="Enter username" />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="password" className="block text-gray-700 font-semibold mb-2">Password</label>
-                        <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" placeholder="Enter password" />
-                    </div>
-                    <div className="mb-6">
-                        <label htmlFor="confirmPassword" className="block text-gray-700 font-semibold mb-2">Confirm Password</label>
-                        <input type="password" id="confirmPassword" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500" placeholder="Confirm password" />
-                    </div> */}
+              
 
                     <div className="grid grid-cols-2 gap-4">
 
@@ -75,7 +62,8 @@ const RegisterScreen = () => {
 
                         <div className="mb-0">
                             
-                            <select id="gender" name="gender" className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500">
+                            <select id="gender" name="gender" value={formData.gender} onChange={handleChange} className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500">
+                                <option value="">==Gender==</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 

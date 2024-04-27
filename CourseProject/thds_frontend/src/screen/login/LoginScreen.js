@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import {baseURLAuth} from "../../utils/Utils/Utils";
 
 const LoginScreen = ({ onLoginSuccess }) => {
-
+    const navigator = useNavigate();
     const [userinfo, setUserinfo] = useState([]);
     const [formData, setFormData] = useState({
         email: '',
@@ -25,6 +25,8 @@ const LoginScreen = ({ onLoginSuccess }) => {
             sessionStorage.setItem("role", response.data.roles[0].title);
        
             onLoginSuccess();
+
+            navigator('/dashboard');
         
         } catch (error) {
             console.error('Error registering user:', error);

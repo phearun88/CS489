@@ -8,7 +8,8 @@ import Modal from 'react-bootstrap/Modal';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import {baseURL} from "../../utils/Utils/Utils";
+import { baseURL } from "../../utils/Utils/Utils";
+import { useNavigate } from "react-router-dom";
 
 
 const IssuseDraftScreen = () => {
@@ -21,17 +22,17 @@ const IssuseDraftScreen = () => {
     const [issueUpdate, setIssueUpdate] = useState([]);
     const [formEditData, setFormEditData] = useState([]);
     const [issueId, setIssId] = useState([]);
-    
+    const navigator = useNavigate();
 
     const handleClose = () => setShow(false);
 
     const fetchCategory = async () => {
         try {
-            const response = await axios.get(baseURL+'/category');
+            const response = await axios.get(baseURL + '/category');
             setCategories(response.data);
             if (response.data.length > 0) {
                 const firstCateId = response.data[0].id
-                
+
                 fetchSubCategory(firstCateId);
             }
         } catch (error) {
@@ -41,12 +42,12 @@ const IssuseDraftScreen = () => {
 
     const handleShowAddIssue = async (issId) => {
         try {
-           
+
             setShow(true);
             fetchCategory();
             setIssId(issId);
 
-            const response = await axios.get(baseURL+`/issue/${issId}`);
+            const response = await axios.get(baseURL + `/issue/${issId}`);
             const issueDraftRes = response.data;
 
             setIssueUpdate(issueDraftRes);
@@ -65,9 +66,9 @@ const IssuseDraftScreen = () => {
 
     const fetchSubCategory = async (cateId) => {
         try {
-            const responseSubCate = await axios.get(baseURL+`/subcategory/category/${cateId}`);
+            const responseSubCate = await axios.get(baseURL + `/subcategory/category/${cateId}`);
             setSubCategories(responseSubCate.data);
-        
+
         } catch (error) {
             console.error('Error fetching Category:', error);
         }
@@ -85,7 +86,7 @@ const IssuseDraftScreen = () => {
     const fetchIssuesDraft = async () => {
 
         try {
-            const responseIssueByUserId = await axios.get(baseURL+`/issue/user/${userId}`);
+            const responseIssueByUserId = await axios.get(baseURL + `/issue/user/draft/${userId}`);
             setIssueByUserId(responseIssueByUserId.data);
 
         } catch (error) {
@@ -96,7 +97,7 @@ const IssuseDraftScreen = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormEditData({ ...formEditData, [name]: value });
-        
+
     };
 
     const handleSubmit = async (e) => {
@@ -109,17 +110,17 @@ const IssuseDraftScreen = () => {
         const buttonClicked = e.nativeEvent.submitter.name;
         if (buttonClicked === "saveDraft") {
 
-           
+
             formDataObj.issDraft = "yes";
         } else if (buttonClicked === "submitIssue") {
             formDataObj.issDraft = "no";
-           
+
         }
 
         try {
 
-            const response = await axios.put(baseURL+`/issue/${issueId}`, formDataObj);
-    
+            const response = await axios.put(baseURL + `/issue/${issueId}`, formDataObj);
+
             setShow(false);
             fetchIssuesDraft();
 
@@ -128,11 +129,15 @@ const IssuseDraftScreen = () => {
         }
     };
 
+    const goToIssue = async () => {
+        navigator('/issues')
+    }
+
     return (
         <div>
             <h1 className="text-3xl font-bold text-gray-800 mb-2 mt-4  mr-10  border-gray-900 border-b-4" b>Issues Draft</h1>
             <div className="mb-2">
-
+                <Button variant="primary" onClick={goToIssue.bind()}> BackToIssues </Button>
             </div>
             <Table striped className="max-w-7xl w-full">
                 <thead>
@@ -156,7 +161,7 @@ const IssuseDraftScreen = () => {
 
                             <td>{draft.createdDate}</td>
                             <td>
-                                <Button variant="primary btn-sm" className="mr-2" onClick={() =>handleShowAddIssue(draft.issId)} >Edit</Button>
+                                <Button variant="primary btn-sm" className="mr-2" onClick={() => handleShowAddIssue(draft.issId)} >Edit</Button>
                                 {/* <Button  onClick={() => clickDelete(draft.iss_id)} variant="primary btn-sm">Delete</Button>  */}
                             </td>
                         </tr>
@@ -198,12 +203,12 @@ const IssuseDraftScreen = () => {
 
                             <Form.Group className="mb-3" controlId="formGridTitle">
                                 <Form.Label>Title</Form.Label>
-                                <Form.Control placeholder="Title" name="issName" value={formEditData.issName} onChange={handleChange}/>
+                                <Form.Control placeholder="Title" name="issName" value={formEditData.issName} onChange={handleChange} />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formGridAddress2">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control as="textarea" row={5} placeholder="" name="issDesc" value={formEditData.issDesc} onChange={handleChange}/>
+                                <Form.Control as="textarea" row={5} placeholder="" name="issDesc" value={formEditData.issDesc} onChange={handleChange} />
                             </Form.Group>
 
                             <Row className="mb-3">

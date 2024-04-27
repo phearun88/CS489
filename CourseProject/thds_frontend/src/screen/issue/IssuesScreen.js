@@ -9,7 +9,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useNavigate } from "react-router-dom";
 
-import { getStatus, baseURL, userId} from "../../utils/Utils/Utils";
+import { getStatus, baseURL, userId, userRole, getUserHanlder} from "../../utils/Utils/Utils";
 
 const IssuesScreen = () => {
     const navigator = useNavigate();
@@ -17,7 +17,7 @@ const IssuesScreen = () => {
     const [show, setShow] = useState(false);
     const [categories, setCategories] = useState([]);
     const [subtcategories, setSubCategories] = useState([]);
-    const userRole = sessionStorage.getItem('role');
+   
     const handleClose = () => setShow(false);
 
     const handleShowAddIssue = () => {
@@ -61,9 +61,25 @@ const IssuesScreen = () => {
     }, []); 
 
     const fetchIssues = async () => {
+        
         try {
-            const response = await axios.get(baseURL+'/issue');
-            setIssues(response.data);
+            console.log("role "+userRole)
+
+            if(userRole == "ROLE_ADMIN"){
+
+                const response = await axios.get(baseURL+'/issue');
+                setIssues(response.data);
+                console.log(response.data)
+                console.log("ROLE_ADMIN "+response.data)
+            }else{
+                const response = await axios.get(baseURL + `/issue/user/${userId}`);
+                setIssues(response.data);
+                console.log("ROLE_USER "+response.data)
+            }
+
+            
+
+            
             
         } catch (error) {
             console.error('Error fetching issues:', error);
@@ -138,12 +154,12 @@ const IssuesScreen = () => {
                             {/* <td>{issue.subCateId}</td> */}
                             <td>{getStatus(issue.issStatus)}</td>
                             <td >
-                                <span className={issue.issTp === 'Urgent' ? 'bg-red-600 text-white rounded-md px-1 py-1' : 'bg-blue-600 text-white rounded-md px-1 py-1'}>
+                                <span className={issue.issTp === 'Urgent' ? 'bg-red-600 text-white rounded-md px-1 py-0' : ' text-black rounded-md px-1 py-0'}>
                                     {issue.issTp}
                                 </span>
                             </td>
                             <td>{issue.issDone} %</td>
-                            <td>{issue.issAssigneeTo}</td>
+                            <td>{getUserHanlder(issue.issAssigneeTo)}</td>
                             <td>{issue.createdDate}</td>
                             {userRole === 'ROLE_ADMIN' && <td><Button onClick={gotoCheckPage.bind(this, issue.issId)} variant="primary btn-sm">Check Issue</Button> </td>}
 

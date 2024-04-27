@@ -3,6 +3,7 @@
 export const baseURL = "http://localhost:8080/api";
 export const baseURLAuth = "http://localhost:8080/auth";
 export const userId = sessionStorage.getItem('userId');
+export const userRole = sessionStorage.getItem('role');
 export function getStatus(iss_status) {
     var issSt = "";
     if (iss_status == "0") {
@@ -19,5 +20,15 @@ export function getStatus(iss_status) {
     return issSt;
 }
 
+
+export function getUserHanlder(id){
+    var result = "";
+    if (id == 0) {
+        result = "No";
+    } else{
+        result = "Accepted"
+    }
+    return result;
+}
 
 

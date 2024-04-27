@@ -2,8 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Table from 'react-bootstrap/Table';
-import InputGroup from 'react-bootstrap/InputGroup';
 import { baseURL } from "../../utils/Utils/Utils";
 const ProfiledScreen = () => {
 
@@ -11,11 +9,11 @@ const ProfiledScreen = () => {
     const [show, setShow] = useState(false);
     const [userprofile, setUserprofile] = useState([]);
 
-    const handleShow = () => {
+    // const handleShow = () => {
 
-        setShow(true);
+    //     setShow(true);
 
-    }
+    // }
 
 
     const handleClose = () => {

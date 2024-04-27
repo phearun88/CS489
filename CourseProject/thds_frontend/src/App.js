@@ -9,8 +9,23 @@ import LoginScreen from './screen/login/LoginScreen';
 import RegisterScreen from './screen/register/RegisterScreen';
 import HomeScreen from './screen/home/HomeScreen';
 
+import {userId} from "../src/utils/Utils/Utils";
 const App = () => {
-  const [isLogin, setIsLogin] = useState(true);
+
+
+  
+   var chkLogin = true;
+
+  if(userId == null){
+    chkLogin = false;
+  }
+
+  console.log(userId)
+
+  console.log("userId======= " +chkLogin)
+
+  //chkLogin
+  const [isLogin, setIsLogin] = useState(chkLogin);
 
   const handleLoginSuccess = () => {
     setIsLogin(true);

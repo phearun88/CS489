@@ -1,7 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
-
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Table from 'react-bootstrap/Table';
@@ -46,6 +44,8 @@ const CategoryScreen = () => {
         try {
             const response = await axios.get(baseURL+'/category'); // Replace '/api/issues' with your backend endpoint
             setCategories(response.data);
+
+            console.log(response.data);
         } catch (error) {
             console.error('Error fetching Category:', error);
         }
@@ -215,7 +215,7 @@ const CategoryScreen = () => {
                 <thead>
                     <tr>
                         <th>Title</th>
-
+                        {/* <th>Type</th> */}
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -223,6 +223,7 @@ const CategoryScreen = () => {
                     {categories.map(cate => (
                         <tr key={cate.id}>
                             <td>{cate.name}</td>
+                            {/* <td>{cate.active}</td> */}
                             {/* <td onClick={() => handleClick(cate.id)}>subcate</td> */}
                             <td>
                                 <Button onClick={() => handleClick(cate.id)} variant="primary btn-sm mr-2">View</Button>

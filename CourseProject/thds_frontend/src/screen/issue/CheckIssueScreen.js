@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -147,7 +146,7 @@ const CheckIssueScreen = () => {
                             <Form.Label>Status</Form.Label>
                             <Form.Select defaultValue="Choose..." name="issStatus" >
                                 <option value={0}>New</option>
-                                <option value={1}>Accepted</option>
+                                {/* <option value={1}>Accepted</option> */}
                                 <option value={2}>In progress</option>
                                 <option value={3}>Done</option>
                                 <option value={4}>Closed</option>
