@@ -40,6 +40,10 @@ public class UserController {
     public User register(@RequestBody User user){
 
         System.out.println("user9 +  +"+ user);
+
+        if(user.getGender() == null || user.getGender()== ""){
+            user.setGender("Other");
+        }
         user.setStatus("1");
         user.setIsAccountNonExpired(true);
         user.setIsAccountNonLocked(true);

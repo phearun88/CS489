@@ -105,6 +105,11 @@ public class IssueController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    @GetMapping("/user/draft/{id}")
+    public ResponseEntity<?> findAllIssueByUserIdWithDraft(@PathVariable("id") Long id) throws ApiException {
+        return ResponseEntity.ok(issueService.findAllIssueByUserIdWithDraft(id));
+    }
+
     @GetMapping("/user/{id}")
     public ResponseEntity<?> getIssueDraftByUserId(@PathVariable("id") Long id) throws ApiException {
         return ResponseEntity.ok(issueService.findAllIssueByUserId(id));

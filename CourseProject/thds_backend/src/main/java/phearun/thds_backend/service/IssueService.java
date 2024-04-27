@@ -17,6 +17,8 @@ public interface IssueService {
 
     List<Issue>findAllIssueByUserId(Long userId);
 
+    List<Issue>findAllIssueByUserIdWithDraft(Long userId);
+
    // List<IssueDetailDTO>findAllIssue();
 
     void delete(Long id);

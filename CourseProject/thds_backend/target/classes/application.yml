@@ -3,9 +3,14 @@ spring:
   # Database
   datasource:
     driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://myapp.postgres.database.azure.com/thds_db
+#    username: phearun
+#    password: Phor+Vy123
+
     url: jdbc:postgresql://localhost:5432/thds_db
     username: postgres
     password: admin
+
   h2:
     console:
       enabled: true

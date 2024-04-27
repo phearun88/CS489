@@ -40,7 +40,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/users/register", "/auth/login")
                         .permitAll()
-                        .requestMatchers(HttpMethod.GET, "/books").hasAnyRole("USER", "ADMIN")
+                        //.requestMatchers(HttpMethod.GET, "/books").hasAnyRole("USER", "ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/api").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/books/**").hasRole("ADMIN")
                         .anyRequest()
                         .permitAll()

@@ -32,20 +32,15 @@ public class Issue {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long issId;
     private String issName;
-
-
     private Long cateId;
-
 //    @ManyToOne
 //    @JoinColumn(name = "cate_id")
 //    private Category category;
 
     private Long subCateId;
-
 //    @ManyToOne
 //    @JoinColumn(name = "sub_cate_id")
 //    private SubCategory subCategory;
-
     private String issDesc;
     private String issStatus;
     private String issTp;

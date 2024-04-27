@@ -53,7 +53,8 @@ public class IssueServiceImpl implements IssueService {
 
         System.out.println("========" + issueRepository.findAll());
         System.out.println("EndTesting");
-        return issueRepository.findAll();
+        //return issueRepository.findAll();
+        return  issueRepository.findAllIssueBySummit();
     }
 
     @Override
@@ -61,6 +62,11 @@ public class IssueServiceImpl implements IssueService {
 
         return issueRepository.findAllIssueByUserId(userId);
 
+    }
+
+    @Override
+    public List<Issue> findAllIssueByUserIdWithDraft(Long userId) {
+        return issueRepository.findAllIssueByUserIdWithDraft(userId);
     }
 
 //    @Override

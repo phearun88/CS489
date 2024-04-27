@@ -16,7 +16,14 @@ public interface IssueRepository extends JpaRepository<Issue, Long>{
 
 
     @Query(value = "SELECT * FROM Issue i WHERE i.user_id = ?1 AND i.iss_draft = 'yes'", nativeQuery = true)
+    List<Issue> findAllIssueByUserIdWithDraft(Long userId);
+
+    @Query(value = "SELECT * FROM Issue i WHERE i.user_id = ?1", nativeQuery = true)
     List<Issue> findAllIssueByUserId(Long userId);
+
+
+    @Query(value = "SELECT * FROM Issue i WHERE i.iss_draft = 'no'", nativeQuery = true)
+    List<Issue> findAllIssueBySummit();
 
 
 //    @Query(value = "select iss.iss_id, iss.iss_name from issue as iss inner join subcategory as sub on iss.sub_cate_id = sub.id",

@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
             User getUserId = userRepository.findByEmail(user.getEmail());
 
             if (getUserId != null) {
-                userRepository.insertUserRole(getUserId.getId(), 2);
+                userRepository.insertUserRole(getUserId.getId(), 1);
             } else {
                 // Handle case where user retrieval failed
                 throw new RuntimeException("Failed to retrieve user after registration.");
